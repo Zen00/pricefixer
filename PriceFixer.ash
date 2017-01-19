@@ -2,12 +2,12 @@ script <PriceFixer.ash>
 
 boolean testForFit(item it)
 {
-	//Adjust these two values according to your preferences
-	int minPrice = 100000;
-	int minAmount = 1000;
+	//Adjust this value according to your preferences
+	int minPrice = 1000000;
 
-	if((historical_price(it) > minPrice) || (item_amount(it) > minAmount) || ((historical_price(it) == 0) && it.tradeable))
+	if((historical_price(it) > minPrice) || ((item_amount(it) * historical_price(it)) > minPrice) || ((historical_price(it) == 0) && it.tradeable))
 		return true;
+
 
 	return false;
 }
